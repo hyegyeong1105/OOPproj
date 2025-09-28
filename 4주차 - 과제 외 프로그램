@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    virtual void speak() { // 가상 함수
+        cout << "동물이 소리를 낸다." << endl;
+    }
+};
+
+class Pet {
+public:
+    void showLove() {
+        cout << "애완동물은 주인을 좋아한다." << endl;
+    }
+};
+
+class Dog : public Animal, public Pet {
+public:
+    void speak() override { //오버라이딩. 말하는 부분의 정의를 수정한다.
+        cout << "멍멍!" << endl;
+    }
+};
+
+int main() {
+    Dog myDog;
+
+    myDog.showLove();
+    myDog.speak();
+    Animal* ptr = &myDog;
+    ptr->speak();
+
+    return 0;
+}
